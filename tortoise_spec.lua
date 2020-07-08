@@ -1,28 +1,28 @@
-local M = {}
+local Test = {}
 local turtle = require "turtle_fake"
-local Toad = require "tortoise"
-local toad
+local Tortoise = require "tortoise"
+local tortoise
 
 local function setup()
-  toad = Toad:new(turtle)
+  tortoise = Tortoise:new(turtle)
   turtle.reset()
 end
 
-function M.up_defaults_to_one_up()
+function Test.up_defaults_to_one_up()
   setup()
 
-  toad:up()
+  tortoise:up()
 
   return turtle.countOfUpCalls == 1
 end
 
-function M.up_takes_a_count()
+function Test.up_takes_a_count()
   setup()
   local count = 5
   
-  toad:up(count)
+  tortoise:up(count)
 
   return turtle.countOfUpCalls == count
 end
 
-return M
+return Test
