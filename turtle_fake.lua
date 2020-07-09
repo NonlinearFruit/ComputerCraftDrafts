@@ -12,6 +12,7 @@ end
 
 function Turtle.forward()
   Turtle.countOfForwardCalls = Turtle.countOfForwardCalls + 1
+  return Turtle.returnForForward
 end
 
 function Turtle.back()
@@ -34,6 +35,10 @@ function Turtle.digDown()
   Turtle.countOfDigDownCalls = Turtle.countOfDigDownCalls + 1
 end
 
+function Turtle.dig()
+  Turtle.countOfDigCalls = Turtle.countOfDigCalls + 1
+end
+
 function Turtle.reset()
   Turtle.countOfUpCalls = 0
   Turtle.countOfDownCalls = 0
@@ -43,6 +48,7 @@ function Turtle.reset()
   Turtle.countOfTurnLeftCalls = 0
   Turtle.countOfDigUpCalls = 0
   Turtle.countOfDigDownCalls = 0
+  Turtle.countOfDigCalls = 0
 end
 
 Turtle.reset()

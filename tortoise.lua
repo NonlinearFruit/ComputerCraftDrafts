@@ -31,7 +31,10 @@ end
 function Tortoise:forward(count)
   local count = count or 1
   for i = 1, count do
-    self.turtle.forward()
+    if not self.turtle.forward() then
+      self.turtle.dig()
+      self.turtle.forward()
+    end
   end
 end
 

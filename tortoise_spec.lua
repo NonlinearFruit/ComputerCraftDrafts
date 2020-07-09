@@ -8,6 +8,7 @@ local function setup()
   turtle.reset()
   turtle.returnForUp = true
   turtle.returnForDown = true
+  turtle.returnForForward = true
 end
 
 function Test.up_defaults_to_one_up()
@@ -82,6 +83,18 @@ function Test.forward_takes_a_count()
 
   return turtle.countOfForwardCalls == count
 end
+
+function Test.forward_digs_and_tries_again()
+  setup()
+  turtle.returnForForward = false
+
+  tortoise:forward()
+
+  local dug = turtle.countOfDigCalls == 1
+  local triedAgain = turtle.countOfForwardCalls == 2
+  return dug and triedAgain
+end
+
 
 function Test.back_defaults_to_one_back()
   setup()
