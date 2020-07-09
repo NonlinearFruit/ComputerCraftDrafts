@@ -11,14 +11,20 @@ end
 function Tortoise:up(count)
   local count = count or 1
   for i = 1, count do
-    self.turtle.up()
+    if not self.turtle.up() then
+      self.turtle.digUp()
+      self.turtle.up()
+    end
   end
 end
 
 function Tortoise:down(count)
   local count = count or 1
   for i = 1, count do
-    self.turtle.down()
+    if not self.turtle.down() then
+      self.turtle.digDown()
+      self.turtle.down()
+    end
   end
 end
 

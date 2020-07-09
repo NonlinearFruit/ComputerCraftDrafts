@@ -6,6 +6,8 @@ local tortoise
 local function setup()
   tortoise = Tortoise:new(turtle)
   turtle.reset()
+  turtle.returnForUp = true
+  turtle.returnForDown = true
 end
 
 function Test.up_defaults_to_one_up()
@@ -25,6 +27,17 @@ function Test.up_takes_a_count()
   return turtle.countOfUpCalls == count
 end
 
+function Test.up_digs_and_tries_again()
+  setup()
+  turtle.returnForUp = false
+
+  tortoise:up()
+
+  local dug = turtle.countOfDigUpCalls == 1
+  local triedAgain = turtle.countOfUpCalls == 2
+  return dug and triedAgain
+end
+
 function Test.down_defaults_to_one_down()
   setup()
 
@@ -40,6 +53,17 @@ function Test.down_takes_a_count()
   tortoise:down(count)
 
   return turtle.countOfDownCalls == count
+end
+
+function Test.down_digs_and_tries_again()
+  setup()
+  turtle.returnForDown = false
+
+  tortoise:down()
+
+  local dug = turtle.countOfDigDownCalls == 1
+  local triedAgain = turtle.countOfDownCalls == 2
+  return dug and triedAgain
 end
 
 function Test.forward_defaults_to_one_forward()
