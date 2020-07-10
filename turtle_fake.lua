@@ -17,6 +17,7 @@ end
 
 function Turtle.back()
   Turtle.countOfBackCalls = Turtle.countOfBackCalls + 1
+  return Turtle.returnForBack
 end
 
 function Turtle.turnRight()
@@ -39,6 +40,25 @@ function Turtle.dig()
   Turtle.countOfDigCalls = Turtle.countOfDigCalls + 1
 end
 
+function Turtle.placeDown()
+  Turtle.countOfPlaceDownCalls = Turtle.countOfPlaceDownCalls + 1
+  return Turtle.returnForPlaceDown
+end
+
+function Turtle.select(block)
+  Turtle.countOfSelectCalls = Turtle.countOfSelectCalls + 1
+  Turtle.lastBlockPassedToSelect = block
+end
+
+function Turtle.getItemCount(block)
+  Turtle.countOfGetItemCountCalls = Turtle.countOfGetItemCountCalls + 1
+  Turtle.lastBlockPassedToGetItemCount = block
+  if Turtle.returnsForGetItemCount then
+    return Turtle.returnsForGetItemCount[Turtle.countOfGetItemCountCalls]
+  end
+  return Turtle.returnForGetItemCount
+end
+
 function Turtle.reset()
   Turtle.countOfUpCalls = 0
   Turtle.countOfDownCalls = 0
@@ -49,6 +69,10 @@ function Turtle.reset()
   Turtle.countOfDigUpCalls = 0
   Turtle.countOfDigDownCalls = 0
   Turtle.countOfDigCalls = 0
+  Turtle.countOfPlaceDownCalls = 0
+  Turtle.countOfSelectCalls = 0
+  Turtle.countOfGetItemCountCalls = 0
+  Turtle.returnsForGetItemCount = nil
 end
 
 Turtle.reset()

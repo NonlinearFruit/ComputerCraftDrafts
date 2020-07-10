@@ -9,6 +9,7 @@ local function setup()
   turtle.returnForUp = true
   turtle.returnForDown = true
   turtle.returnForForward = true
+  turtle.returnForBack = true
 end
 
 function Test.up_defaults_to_one_up()
@@ -111,6 +112,18 @@ function Test.back_takes_a_count()
   tortoise:back(count)
 
   return turtle.countOfBackCalls == count
+end
+
+function Test.back_turns_around_digs_tries_again()
+  setup()
+  turtle.returnForBack = false
+
+  tortoise:back()
+
+  local turnsAround = turtle.countOfTurnRightCalls == 4  
+  local dug = turtle.countOfDigCalls == 1
+  local triedAgain = turtle.countOfBackCalls == 2
+  return turnsAround and dug and triedAgain
 end
 
 function Test.clockwise_turns_right_once()

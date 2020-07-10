@@ -41,7 +41,12 @@ end
 function Tortoise:back(count)
   local count = count or 1
   for i = 1, count do
-    self.turtle.back()
+    if not self.turtle.back() then
+      self:clockwise(2)
+      self.turtle.dig()
+      self:clockwise(2)
+      self.turtle.back()
+    end
   end
 end
 
