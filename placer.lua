@@ -1,5 +1,4 @@
 local Placer = {}
-local turtle
 
 function Placer:new(i, t)
   newObj = {}
