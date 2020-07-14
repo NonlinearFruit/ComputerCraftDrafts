@@ -15,7 +15,9 @@ function Test.print_moves_forward_for_each_cell_of_grid()
 
   builder:print(grid)
 
-  return tortoise.countOfForwardCalls == #grid * #grid[1] * #grid[1][1]
+  local printingMovements = #grid * #grid[1] * #grid[1][1]
+  local turningAroundMovements = #grid + (2*(#grid[1]-1) * #grid)
+  return tortoise.countOfForwardCalls == printingMovements + turningAroundMovements
 end
 
 function Test.print_moves_up_for_each_layer_of_the_grid()
@@ -45,6 +47,48 @@ function Test.print_turns_widdershins_proper_amount()
 
   local expected = #grid * #grid[1] - (#grid[1] % 2)
   return tortoise.countOfWiddershinsCalls == expected
+end
+
+function Test.print_places_the_proper_number_of_blocks()
+  setup()
+  local grid = {{{1,1,1}, {1,1,1}}, {{1,1,1}, {1,1,1}}}
+
+  builder:print(grid)
+
+  local allPlace = placer.countOfPlaceDownCalls == #grid * #grid[1] * #grid[1][1]
+  local noDig = placer.countOfDigDownCalls == 0
+  return allPlace and noDig
+end
+
+function Test.print_digs_the_proper_number_of_blocks()
+  setup()
+  local grid = {{{0,0,0}, {0,0,0}}, {{0,0,0}, {0,0,0}}}
+
+  builder:print(grid)
+
+  local allDig = placer.countOfDigDownCalls == #grid * #grid[1] * #grid[1][1]
+  local noPlace = placer.countOfPlaceDownCalls == 0
+  return allDig and noPlace
+end
+
+local function sequenceTest(grid, sequence)
+  setup()
+
+  builder:print(grid)
+
+  print(placer.sequenceOfPlaceAndDig)
+  return placer.sequenceOfPlaceAndDig == sequence
+end
+
+local sequenceTests = {
+  {{{{0}}}, "0"},
+  {{{{0, 0, 0, 1}}}, "0001"},
+  {{{{0, 0}, {1, 0}}}, "0001"},
+  {{{{0, 0}, {0, 0}, {1,0}}}, "000010"},
+}
+
+for index, test in pairs(sequenceTests) do
+  Test["printing_grid_order_matches_sequence_"..index] = function () return sequenceTest(sequenceTests[index][1], sequenceTests[index][2]) end
 end
 
 return Test

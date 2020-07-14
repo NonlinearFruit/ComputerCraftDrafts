@@ -85,4 +85,12 @@ function Test.placeDown_resets_block_count_after_refill()
   return turtle.lastBlockPassedToGetItemCount == 1
 end
 
+function Test.digDown_digs_down()
+  setup()
+
+  placer:digDown()
+
+  return turtle.countOfDigDownCalls == 1
+end
+
 return Test

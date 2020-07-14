@@ -24,4 +24,8 @@ function Placer:placeDown()
   end
 end
 
+function Placer:digDown()
+  self.turtle.digDown()
+end
+
 return Placer
