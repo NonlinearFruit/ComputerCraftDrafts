@@ -81,10 +81,12 @@ local function sequenceTest(grid, sequence)
 end
 
 local sequenceTests = {
-  {{{{0}}}, "0"},
-  {{{{0, 0, 0, 1}}}, "0001"},
-  {{{{0, 0}, {1, 0}}}, "0001"},
-  {{{{0, 0}, {0, 0}, {1,0}}}, "000010"},
+  {{{{0}}}, "0"}, -- One Column
+  {{{{0, 1}}}, "01"}, -- Two Column / One Row
+  {{{{0, 0}, {1, 0}}}, "0001"}, -- Two Row
+  {{{{0, 0}, {0, 0}, {1,0}}}, "000010"}, -- Three Row
+  {{{{0},{1}},{{0},{1}}}, "0110"}, -- Two Layer
+  {{{{0},{1}},{{0},{1}}}, "0110"}, -- Two Layer
 }
 
 for index, test in pairs(sequenceTests) do
