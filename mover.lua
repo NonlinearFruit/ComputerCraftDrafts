@@ -1,14 +1,14 @@
-local Tortoise = {}
+local Mover = {}
 local turtle
 
-function Tortoise:new(t)
+function Mover:new(t)
   newObj = {}
   self.__index = self
   self.turtle = t
   return setmetatable(newObj, self)
 end
 
-function Tortoise:up(count)
+function Mover:up(count)
   local count = count or 1
   for i = 1, count do
     if not self.turtle.up() then
@@ -18,7 +18,7 @@ function Tortoise:up(count)
   end
 end
 
-function Tortoise:down(count)
+function Mover:down(count)
   local count = count or 1
   for i = 1, count do
     if not self.turtle.down() then
@@ -28,7 +28,7 @@ function Tortoise:down(count)
   end
 end
 
-function Tortoise:forward(count)
+function Mover:forward(count)
   local count = count or 1
   for i = 1, count do
     if not self.turtle.forward() then
@@ -38,7 +38,7 @@ function Tortoise:forward(count)
   end
 end
 
-function Tortoise:back(count)
+function Mover:back(count)
   local count = count or 1
   for i = 1, count do
     if not self.turtle.back() then
@@ -50,18 +50,18 @@ function Tortoise:back(count)
   end
 end
 
-function Tortoise:clockwise(count)
+function Mover:clockwise(count)
   local count = count or 1
   for i = 1, count do
     self.turtle.turnRight()
   end
 end
 
-function Tortoise:widdershins(count)
+function Mover:widdershins(count)
   local count = count or 1
   for i = 1, count do
     self.turtle.turnLeft()
   end
 end
 
-return Tortoise
+return Mover

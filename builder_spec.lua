@@ -1,12 +1,12 @@
 local Test = {}
 local Placer = require "placer_fake"
-local Tortoise = require "tortoise_fake"
+local Mover = require "mover_fake"
 local Builder = require "builder"
 
 local function setup()
   placer = Placer:new()
-  tortoise = Tortoise:new()
-  builder = Builder:new(placer, tortoise)
+  mover = Mover:new()
+  builder = Builder:new(placer, mover)
 end
 
 function Test.print_moves_forward_for_each_cell_of_grid()
@@ -17,7 +17,7 @@ function Test.print_moves_forward_for_each_cell_of_grid()
 
   local printingMovements = #grid * #grid[1] * #grid[1][1]
   local turningAroundMovements = #grid + (2*(#grid[1]-1) * #grid)
-  return tortoise.countOfForwardCalls == printingMovements + turningAroundMovements
+  return mover.countOfForwardCalls == printingMovements + turningAroundMovements
 end
 
 function Test.print_moves_up_for_each_layer_of_the_grid()
@@ -26,7 +26,7 @@ function Test.print_moves_up_for_each_layer_of_the_grid()
 
   builder:print(grid)
 
-  return tortoise.countOfUpCalls == #grid
+  return mover.countOfUpCalls == #grid
 end
 
 function Test.print_turns_clockwise_proper_amount()
@@ -36,7 +36,7 @@ function Test.print_turns_clockwise_proper_amount()
   builder:print(grid)
 
   local expected = #grid * #grid[1] - (#grid[1] % 2)
-  return tortoise.countOfClockwiseCalls == expected
+  return mover.countOfClockwiseCalls == expected
 end
 
 function Test.print_turns_widdershins_proper_amount()
@@ -46,7 +46,7 @@ function Test.print_turns_widdershins_proper_amount()
   builder:print(grid)
 
   local expected = #grid * #grid[1] - (#grid[1] % 2)
-  return tortoise.countOfWiddershinsCalls == expected
+  return mover.countOfWiddershinsCalls == expected
 end
 
 function Test.print_places_the_proper_number_of_blocks()

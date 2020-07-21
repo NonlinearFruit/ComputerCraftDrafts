@@ -1,10 +1,10 @@
 local Builder = {}
 
-function Builder:new(p, t)
+function Builder:new(p, m)
   newObj = {}
   self.__index = self
   self.placer = p
-  self.tortoise = t
+  self.mover = m
   return setmetatable(newObj, self)
 end
 
@@ -15,7 +15,7 @@ function Builder:print(grid)
       for row = 1, #grid[1] do
         if row % 2 == 1 then
           for column = 1, #grid[1][1] do
-            self.tortoise:forward()
+            self.mover:forward()
             if grid[layer][row][column] == 1 then
               self.placer:placeDown()
             else
@@ -24,7 +24,7 @@ function Builder:print(grid)
           end
         else
           for column = #grid[1][1], 1, -1 do
-            self.tortoise:forward()
+            self.mover:forward()
             if grid[layer][row][column] == 1 then
               self.placer:placeDown()
             else
@@ -33,27 +33,27 @@ function Builder:print(grid)
           end
         end
         if row % 2 == 1 then
-          self.tortoise:forward()
-          self.tortoise:clockwise()
+          self.mover:forward()
+          self.mover:clockwise()
           if row ~= #grid[1] then
-            self.tortoise:forward()
+            self.mover:forward()
           end
-          self.tortoise:clockwise()
+          self.mover:clockwise()
         else
-          self.tortoise:forward()
-          self.tortoise:widdershins()
+          self.mover:forward()
+          self.mover:widdershins()
           if row ~= #grid[1] then
-            self.tortoise:forward()
+            self.mover:forward()
           end
-          self.tortoise:widdershins()
+          self.mover:widdershins()
         end
       end
-      self.tortoise:up()
+      self.mover:up()
     else
       for row = #grid[1],1,-1 do
         if row % 2 == 1 then
           for column = 1, #grid[1][1] do
-            self.tortoise:forward()
+            self.mover:forward()
             if grid[layer][row][column] == 1 then
               self.placer:placeDown()
             else
@@ -62,7 +62,7 @@ function Builder:print(grid)
           end
         else
           for column = #grid[1][1], 1, -1 do
-            self.tortoise:forward()
+            self.mover:forward()
             if grid[layer][row][column] == 1 then
               self.placer:placeDown()
             else
@@ -71,22 +71,22 @@ function Builder:print(grid)
           end
         end
         if row % 2 == 1 then
-          self.tortoise:forward()
-          self.tortoise:clockwise()
+          self.mover:forward()
+          self.mover:clockwise()
           if row ~= #grid[1] then
-            self.tortoise:forward()
+            self.mover:forward()
           end
-          self.tortoise:clockwise()
+          self.mover:clockwise()
         else
-          self.tortoise:forward()
-          self.tortoise:widdershins()
+          self.mover:forward()
+          self.mover:widdershins()
           if row ~= #grid[1] then
-            self.tortoise:forward()
+            self.mover:forward()
           end
-          self.tortoise:widdershins()
+          self.mover:widdershins()
         end
       end
-      self.tortoise:up()
+      self.mover:up()
     end
   end
 end

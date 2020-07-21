@@ -59,6 +59,22 @@ function Turtle.getItemCount(block)
   return Turtle.returnForGetItemCount
 end
 
+function Turtle.detectUp()
+  Turtle.countOfDetectUpCalls = Turtle.countOfDetectUpCalls + 1
+  if Turtle.returnsForDetectUp then
+    return Turtle.returnsForDetectUp[Turtle.countOfDetectUpCalls]
+  end
+  return Turtle.returnForDetectUp
+end
+
+function Turtle.detectDown()
+  Turtle.countOfDetectDownCalls = Turtle.countOfDetectDownCalls + 1
+  if Turtle.returnsForDetectDown then
+    return Turtle.returnsForDetectDown[Turtle.countOfDetectDownCalls]
+  end
+  return Turtle.returnForDetectDown
+end
+
 function Turtle.reset()
   Turtle.countOfUpCalls = 0
   Turtle.countOfDownCalls = 0
@@ -72,7 +88,11 @@ function Turtle.reset()
   Turtle.countOfPlaceDownCalls = 0
   Turtle.countOfSelectCalls = 0
   Turtle.countOfGetItemCountCalls = 0
+  Turtle.countOfDetectUpCalls = 0
+  Turtle.countOfDetectDownCalls = 0
   Turtle.returnsForGetItemCount = nil
+  Turtle.returnsForDetectUp = nil
+  Turtle.returnsForDetectDown = nil
 end
 
 Turtle.reset()
