@@ -64,4 +64,12 @@ function Mover:widdershins(count)
   end
 end
 
+if select(1, ...) ~= "mover" then
+  require "bootstrapper"
+  local mover = getMover()
+  local command = select(1, ...)
+  local count = select(2, ...) or 1
+  mover[command](mover, count)
+end
+
 return Mover

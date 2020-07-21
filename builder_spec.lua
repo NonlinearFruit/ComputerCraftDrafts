@@ -76,7 +76,6 @@ local function sequenceTest(grid, sequence)
 
   builder:print(grid)
 
-  print(placer.sequenceOfPlaceAndDig)
   return placer.sequenceOfPlaceAndDig == sequence
 end
 
