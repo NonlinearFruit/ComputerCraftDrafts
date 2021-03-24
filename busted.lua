@@ -47,3 +47,7 @@ term.setTextColor(colors.red);
 term.write(totalFailed);
 term.setTextColor(colors.white);
 print(" failed.");
+
+if os.exit ~= nil then
+  os.exit(totalFailed)
+end
