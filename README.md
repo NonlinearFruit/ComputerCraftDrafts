@@ -17,8 +17,10 @@ These are some foundational turtle scripts that have been organically growing. T
 | [Feed the Beast Modpacks][ftb]       |
 | [ComputerCraft][cc]                  |
 | [ComputerCraft Vim][vimcc]           |
+| [ComputerCraft Emulator][ccemux]     |
 
 [minecraft]: https://www.minecraft.net/en-us/store/minecraft-java-edition
 [ftb]: https://www.feed-the-beast.com
 [cc]: https://github.com/SquidDev-CC/CC-Tweaked
 [vimcc]: https://github.com/HugoNikanor/VimCC
+[ccemux]: https://emux.cc
