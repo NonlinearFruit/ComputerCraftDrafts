@@ -5,6 +5,7 @@ These are some foundational turtle scripts that have been organically growing. T
 
 | Scripts    | Description |
 | ---        | ---         |
+| automaton  |             |
 | builder    |             |
 | lumberjack |             |
 | miner      |             |
