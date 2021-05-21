@@ -1,3 +1,7 @@
+<p align="center">
+  <img src=".icon.png" alt="computer craft drafts icon" width="400" height="400"/>
+</p>
+
 # ComputerCraftDrafts
 ![[tests](https://github.com/NonlinearFruit/ComputerCraftDrafts/actions)](https://img.shields.io/github/workflow/status/NonlinearFruit/ComputerCraftDrafts/test?label=tests)
 
