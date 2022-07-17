@@ -3,6 +3,8 @@ local Placer = require "placer"
 local Builder = require "builder"
 local Miner = require "miner"
 local Lumberjack = require "lumberjack"
+local Automaton = require "automaton"
+local MazeGenerator = require "mazegenerator"
 
 function getMover()
   return Mover:new(turtle)
@@ -22,4 +24,13 @@ end
 
 function getLumberjack()
   return Lumberjack:new(turtle)
+end
+
+function getAutomaton()
+  return Automaton:new()
+end
+
+
+function getMazeGenerator()
+  return MazeGenerator:new()
 end

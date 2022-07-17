@@ -7,14 +7,15 @@
 
 These are some foundational turtle scripts that have been organically growing. The addition of a test runner (`busted`) for ComputerCraft allows for TDD and production quality software.
 
-| Scripts    | Description |
-| ---        | ---         |
-| automaton  |             |
-| builder    |             |
-| lumberjack |             |
-| miner      |             |
-| mover      |             |
-| placer     |             |
+| Scripts      | Description |
+| ---          | ---         |
+| automaton    |             |
+| builder      |             |
+| lumberjack   |             |
+| mazegenerator|             |
+| miner        |             |
+| mover        |             |
+| placer       |             |
 
 | Resources                            |
 |---                                   |

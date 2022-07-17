@@ -72,4 +72,27 @@ function Automaton:animate(birth, survival, seed)
   return nextGen
 end
 
+if select(1, ...) ~= "automaton" then
+  require "bootstrapper"
+  local automaton = getAutomaton()
+  local birthCounts = {3}
+  local surviveCounts = {1,2,3,4}
+  local x = select(1, ...) or 16
+  local y = select(2, ...) or 16
+  local seed = {}
+  for row = 1, x do
+    seed[row] = {}
+    for column = 1, y do
+      seed[row][column] = math.random(0,1)
+    end
+  end
+  local maze = seed
+  for i=0, 100 do
+    maze = automaton:animate(birthCounts, surviveCounts, maze)
+  end
+  for row = 1, #seed do
+    io.write(table.concat(maze[row]), "\n")
+  end
+end
+
 return Automaton
