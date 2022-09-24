@@ -1,10 +1,10 @@
 local Mover = {}
-local turtle
 
-function Mover:new(t)
+function Mover:new(t, i)
   newObj = {}
   self.__index = self
   self.turtle = t
+  self.io = i
   return setmetatable(newObj, self)
 end
 
@@ -13,9 +13,13 @@ function Mover:up(count)
   for i = 1, count do
     if not self.turtle.up() then
       self.turtle.digUp()
+      if not self.turtle.up() then
+        self.io.read()
+        self.turtle.refuel(100)
       self.turtle.up()
     end
   end
+end
 end
 
 function Mover:down(count)
@@ -23,9 +27,13 @@ function Mover:down(count)
   for i = 1, count do
     if not self.turtle.down() then
       self.turtle.digDown()
+      if not self.turtle.down() then
+        self.io.read()
+        self.turtle.refuel(100)
       self.turtle.down()
     end
   end
+end
 end
 
 function Mover:forward(count)
@@ -33,9 +41,13 @@ function Mover:forward(count)
   for i = 1, count do
     if not self.turtle.forward() then
       self.turtle.dig()
+      if not self.turtle.forward() then
+        self.io.read()
+        self.turtle.refuel(100)
       self.turtle.forward()
     end
   end
+end
 end
 
 function Mover:back(count)
@@ -45,9 +57,13 @@ function Mover:back(count)
       self:clockwise(2)
       self.turtle.dig()
       self:clockwise(2)
+      if not self.turtle.back() then
+        self.io.read()
+        self.turtle.refuel(100)
       self.turtle.back()
     end
   end
+end
 end
 
 function Mover:clockwise(count)

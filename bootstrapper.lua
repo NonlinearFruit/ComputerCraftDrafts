@@ -7,7 +7,7 @@ local Automaton = require "automaton"
 local MazeGenerator = require "mazegenerator"
 
 function getMover()
-  return Mover:new(turtle)
+  return Mover:new(turtle, io)
 end
 
 function getPlacer()

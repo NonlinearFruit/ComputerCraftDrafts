@@ -2,21 +2,33 @@ local Turtle = {}
 
 function Turtle.up()
   Turtle.countOfUpCalls = Turtle.countOfUpCalls + 1
+  if Turtle.returnsForUp then
+    return Turtle.returnsForUp[Turtle.countOfUpCalls]
+  end
   return Turtle.returnForUp
 end
 
 function Turtle.down()
   Turtle.countOfDownCalls = Turtle.countOfDownCalls + 1
+  if Turtle.returnsForDown then
+    return Turtle.returnsForDown[Turtle.countOfDownCalls]
+  end
   return Turtle.returnForDown
 end
 
 function Turtle.forward()
   Turtle.countOfForwardCalls = Turtle.countOfForwardCalls + 1
+  if Turtle.returnsForForward then
+    return Turtle.returnsForForward[Turtle.countOfForwardCalls]
+  end
   return Turtle.returnForForward
 end
 
 function Turtle.back()
   Turtle.countOfBackCalls = Turtle.countOfBackCalls + 1
+  if Turtle.returnsForBack then
+    return Turtle.returnsForBack[Turtle.countOfBackCalls]
+  end
   return Turtle.returnForBack
 end
 
@@ -75,6 +87,12 @@ function Turtle.detectDown()
   return Turtle.returnForDetectDown
 end
 
+function Turtle.refuel(count)
+  Turtle.countOfRefuelCalls = Turtle.countOfRefuelCalls + 1
+  Turtle.lastCountPassedToRefuel = count
+  return Turtle.returnForRefuel
+end
+
 function Turtle.reset()
   Turtle.countOfUpCalls = 0
   Turtle.countOfDownCalls = 0
@@ -90,6 +108,11 @@ function Turtle.reset()
   Turtle.countOfGetItemCountCalls = 0
   Turtle.countOfDetectUpCalls = 0
   Turtle.countOfDetectDownCalls = 0
+  Turtle.countOfRefuelCalls = 0
+  Turtle.returnsForUp = nil
+  Turtle.returnsForDown = nil
+  Turtle.returnsForForward = nil
+  Turtle.returnsForBack = nil
   Turtle.returnsForGetItemCount = nil
   Turtle.returnsForDetectUp = nil
   Turtle.returnsForDetectDown = nil
