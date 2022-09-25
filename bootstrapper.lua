@@ -5,6 +5,7 @@ local Miner = require "miner"
 local Lumberjack = require "lumberjack"
 local Automaton = require "automaton"
 local MazeGenerator = require "mazegenerator"
+local Tunnel = require "tunnel"
 
 function getMover()
   return Mover:new(turtle, io)
@@ -30,6 +31,10 @@ function getAutomaton()
   return Automaton:new()
 end
 
+
+function getTunnel()
+  return Tunnel:new(getMover(), getPlacer())
+end
 
 function getMazeGenerator()
   return MazeGenerator:new()
