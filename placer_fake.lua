@@ -3,9 +3,7 @@ local Placer = {}
 function Placer:new()
   newObj = {}
   self.__index = self
-  self.countOfPlaceDownCalls = 0
-  self.countOfDigDownCalls = 0
-  self.sequenceOfPlaceAndDig = ""
+  self:reset()
   return setmetatable(newObj, self)
 end
 
@@ -17,6 +15,12 @@ end
 function Placer:digDown()
   self.countOfDigDownCalls = self.countOfDigDownCalls + 1
   self.sequenceOfPlaceAndDig = self.sequenceOfPlaceAndDig .. "0"
+end
+
+function Placer:reset()
+  self.countOfPlaceDownCalls = 0
+  self.countOfDigDownCalls = 0
+  self.sequenceOfPlaceAndDig = ""
 end
 
 return Placer

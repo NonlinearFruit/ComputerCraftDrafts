@@ -27,7 +27,7 @@ function Tunnel:tunnel(distance)
     self.mover:down(2)
     self.placer:placeDown()
 
-    self.mover:widdershins(2)
+    self.mover:clockwise(2)
     self.mover:forward()
     self.mover:down()
     self.mover:clockwise()

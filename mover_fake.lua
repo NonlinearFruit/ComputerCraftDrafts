@@ -3,11 +3,7 @@ local Mover = {}
 function Mover:new()
   newObj = {}
   self.__index = self
-  self.countOfForwardCalls = 0
-  self.countOfClockwiseCalls = 0
-  self.countOfUpCalls = 0
-  self.countOfDownCalls = 0
-  self.countOfWiddershinsCalls = 0
+  self:reset()
   return setmetatable(newObj, self)
 end
 
@@ -33,6 +29,14 @@ end
 
 function Mover:widdershins()
   self.countOfWiddershinsCalls = self.countOfWiddershinsCalls + 1
+end
+
+function Mover:reset()
+  self.countOfForwardCalls = 0
+  self.countOfClockwiseCalls = 0
+  self.countOfUpCalls = 0
+  self.countOfDownCalls = 0
+  self.countOfWiddershinsCalls = 0
 end
 
 return Mover
