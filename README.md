@@ -3,7 +3,7 @@
 </p>
 
 # ComputerCraftDrafts
-![[tests](https://github.com/NonlinearFruit/ComputerCraftDrafts/actions)](https://img.shields.io/github/workflow/status/NonlinearFruit/ComputerCraftDrafts/test?label=tests)
+![[tests](https://github.com/NonlinearFruit/ComputerCraftDrafts/actions)](https://img.shields.io/github/actions/workflow/status/NonlinearFruit/ComputerCraftDrafts/test.yml?branch=master&label=tests)
 
 These are some foundational turtle scripts that have been organically growing. The addition of a test runner (`busted`) for ComputerCraft allows for TDD and production quality software.
 
