@@ -113,11 +113,11 @@ function MazeGenerator:generate(width, height)
 end
 
 if select(1, ...) ~= "mazegenerator" then
-  require "bootstrapper"
-  local MazeGenerator = getMazeGenerator()
+  require("bootstrapper")
+  local mazeGenerator = getMazeGenerator()
   local x = select(1, ...) or 16
   local y = select(2, ...) or 16
-  local maze = MazeGenerator:generate(x, y)
+  local maze = mazeGenerator:generate(x, y)
   for row = 1, #maze do
     io.write(string.gsub(table.concat(maze[row]), Empty, " "), "\n")
   end
