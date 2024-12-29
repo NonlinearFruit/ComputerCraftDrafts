@@ -1,7 +1,7 @@
 local Placer = {}
 
 function Placer:new(i, t)
-  newObj = {}
+  local newObj = {}
   self.__index = self
   self.turtle = t
   self.io = i
@@ -10,7 +10,7 @@ end
 
 function Placer:placeDown()
   local block = 1
-  while(self.turtle.getItemCount(block) == 0) do 
+  while(self.turtle.getItemCount(block) == 0) do
     if block == 16 then
       self.io.read()
       block = 0
